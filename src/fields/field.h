@@ -14,9 +14,11 @@ protected:
         LEFT = 3
     };
 
-    virtual void step_to_neighbors();
+    virtual void step_to_neighbors(unsigned int jump_length = 1);
 
     void attempt_value_change(unsigned int distance_to_here);
+
+    void set_shortest_to_here(unsigned int);
 
 private:
     std::unordered_map<neighbor, neighbor> neighbor_opposite{{BOTTOM, TOP}, {TOP, BOTTOM}, {RIGHT, LEFT}, {LEFT, RIGHT}};

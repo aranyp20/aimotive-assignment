@@ -4,7 +4,7 @@ void field::step_to_neighbors(unsigned int jump_length)
 {
     for (auto it = neighbors.begin(); it != neighbors.end(); it++)
     {
-        it->second.enter(shortest_to_here + jump_length, neighbor_opposite[it->first]);
+        it->second->enter(shortest_to_here + jump_length, neighbor_opposite[it->first]);
     }
 }
 
@@ -33,7 +33,7 @@ unsigned int field::collect_result() const
     return 0;
 }
 
-void field::set_neighbor(const neighbor which, field &to_what)
+void field::set_neighbor(const neighbor which, field *to_what)
 {
     neighbors[which] = to_what;
 }

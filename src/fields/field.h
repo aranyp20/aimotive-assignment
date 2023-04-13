@@ -19,7 +19,7 @@ public:
     /* Only return the distance to this node in target nodes, otherwise 0. */
     virtual unsigned int collect_result() const;
 
-    void set_neighbor(const neighbor which, field &to_what);
+    void set_neighbor(const neighbor which, field *to_what);
 
 protected:
     virtual void step_to_neighbors(unsigned int jump_length = 1);
@@ -36,5 +36,5 @@ private:
 
     unsigned int shortest_to_here = std::numeric_limits<unsigned int>::max();
 
-    std::unordered_map<neighbor, field &> neighbors;
+    std::unordered_map<neighbor, field *> neighbors;
 };

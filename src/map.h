@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include <vector>
 
 #include "field.h"
@@ -8,8 +9,8 @@ class map
 {
 
     std::vector<std::vector<field *>> fields;
-    unsigned int height;
-    unsigned int width;
+    size_t height;
+    size_t width;
 
     std::vector<field *> read_row() const;
 

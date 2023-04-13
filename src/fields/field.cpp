@@ -23,7 +23,17 @@ void field::set_shortest_to_here(unsigned int val)
     shortest_to_here = val;
 }
 
+unsigned int field::get_shortest_to_here() const
+{
+    return shortest_to_here;
+}
+
 unsigned int field::collect_result() const
 {
     return 0;
+}
+
+void field::set_neighbor(const neighbor which, field &to_what)
+{
+    neighbors[which] = to_what;
 }

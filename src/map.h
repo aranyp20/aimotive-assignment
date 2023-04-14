@@ -15,7 +15,7 @@ class map
     starting_field *enter_point;
 
     std::vector<field *> read_row();
-    /* Sets the enter point if it created a starting_field. */
+    /* Sets the enter_point if it created a starting_field. */
     field *create_field(const char);
     void setup_fields();
     void setup_neighborhood();

@@ -2,12 +2,8 @@
 
 #include "map.h"
 
-#include "hexa_converter.h"
-
 int main(void)
 {
-
-    hexa_converter hc;
 
     map main_map;
     main_map.build();

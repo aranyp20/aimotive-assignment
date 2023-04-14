@@ -4,7 +4,9 @@
 
 bool target_field::is_valid_enter(const neighbor from) const
 {
-    return true;
+    std::bitset<4> mask(0001);
+
+    return ((mask << from) & gate_bin_representation) != 0;
 }
 
 void target_field::step_to_neighbors(unsigned int)

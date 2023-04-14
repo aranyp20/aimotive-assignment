@@ -10,10 +10,11 @@ class field
 public:
     enum neighbor
     {
-        TOP = 0,
-        RIGHT = 1,
-        BOTTOM = 2,
-        LEFT = 3
+        /* Do NOT change the order! */
+        RIGHT = 0,
+        TOP = 1,
+        LEFT = 2,
+        BOTTOM = 3
     };
 
     virtual void enter(unsigned int distance_to_here, const neighbor from) = 0;

@@ -125,7 +125,3 @@ map::~map()
         }
     }
 }
-
-map::fields_iterator::fields_iterator(std::vector<std::vector<field *>> &_through) : row_index(0), column_index(0), through(_through)
-{
-}

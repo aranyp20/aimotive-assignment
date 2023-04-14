@@ -12,17 +12,6 @@ class map
     size_t height;
     size_t width;
 
-    class fields_iterator
-    {
-    private:
-        std::vector<std::vector<field *>> &through;
-        size_t row_index;
-        size_t column_index;
-
-    public:
-        fields_iterator(std::vector<std::vector<field *>> &);
-    };
-
     starting_field *enter_point;
 
     std::vector<field *> read_row();

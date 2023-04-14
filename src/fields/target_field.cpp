@@ -20,5 +20,9 @@ void target_field::enter(unsigned int distance_to_here, const neighbor from)
 
 unsigned int target_field::collect_result() const
 {
+    if (get_shortest_to_here() == UNTOUCHED)
+    {
+        return 0;
+    }
     return get_shortest_to_here();
 }

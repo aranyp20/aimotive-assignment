@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <vector>
 
-#include "field.h"
+#include "starting_field.h"
 
 class map
 {
@@ -12,13 +12,32 @@ class map
     size_t height;
     size_t width;
 
-    std::vector<field *> read_row() const;
+    class fields_iterator
+    {
+    private:
+        std::vector<std::vector<field *>> &through;
+        size_t row_index;
+        size_t column_index;
 
-    field *create_field(const char) const;
+    public:
+        fields_iterator(std::vector<std::vector<field *>> &);
+    };
 
-    void set_neighborhood();
-    void set_neighbors_of(unsigned row_num, unsigned col_num);
+    starting_field *enter_point;
+
+    std::vector<field *> read_row();
+    field *create_field(const char);
+    void setup_fields();
+    void setup_neighborhood();
+    void set_neighbors_of(size_t row_num, size_t col_num);
 
 public:
+    map(const map &) = delete;
+    map &operator=(const map &) = delete;
+    map() = default;
+    ~map();
+
     void build();
+    void start_calculation();
+    unsigned int collect_results() const;
 };

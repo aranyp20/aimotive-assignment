@@ -7,7 +7,7 @@
 #include "wall_field.h"
 #include "target_field.h"
 
-std::vector<field *> map::read_row() const
+std::vector<field *> map::read_row()
 {
     std::vector<field *> result;
 
@@ -23,12 +23,13 @@ std::vector<field *> map::read_row() const
     return result;
 }
 
-field *map::create_field(const char c) const
+field *map::create_field(const char c)
 {
     switch (c)
     {
     case 'T':
-        return new starting_field();
+        enter_point = new starting_field();
+        return enter_point;
         break;
     case '-':
         return new empty_field();
@@ -42,18 +43,29 @@ field *map::create_field(const char c) const
     }
 }
 
-void map::set_neighborhood()
+void map::setup_fields()
 {
-    for (unsigned i = 0; i < height; i++)
+    std::cin >> height;
+    std::cin >> width;
+
+    for (unsigned int i = 0; i < height; i++)
     {
-        for (unsigned j = 0; j < width; j++)
+        fields.push_back(read_row());
+    }
+}
+
+void map::setup_neighborhood()
+{
+    for (size_t i = 0; i < height; i++)
+    {
+        for (size_t j = 0; j < width; j++)
         {
             set_neighbors_of(i, j);
         }
     }
 }
 
-void map::set_neighbors_of(unsigned row_num, unsigned col_num)
+void map::set_neighbors_of(size_t row_num, size_t col_num)
 {
     field &manipulated_field = *(fields[row_num][col_num]);
 
@@ -78,13 +90,42 @@ void map::set_neighbors_of(unsigned row_num, unsigned col_num)
 void map::build()
 {
 
-    std::cin >> height;
-    std::cin >> width;
+    setup_fields();
 
-    for (unsigned int i = 0; i < height; i++)
+    setup_neighborhood();
+}
+
+void map::start_calculation()
+{
+    enter_point->start_calculation();
+}
+
+unsigned int map::collect_results() const
+{
+    unsigned int sum = 0;
+
+    for (const auto &a : fields)
     {
-        fields.push_back(read_row());
+        for (const auto &b : a)
+        {
+            sum += b->collect_result();
+        }
     }
 
-    set_neighborhood();
+    return sum;
+}
+
+map::~map()
+{
+    for (const auto &a : fields)
+    {
+        for (const auto &b : a)
+        {
+            delete b;
+        }
+    }
+}
+
+map::fields_iterator::fields_iterator(std::vector<std::vector<field *>> &_through) : row_index(0), column_index(0), through(_through)
+{
 }

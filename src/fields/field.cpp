@@ -1,5 +1,7 @@
 #include "field.h"
 
+std::unordered_map<field::neighbor, field::neighbor> field::neighbor_opposite = std::unordered_map<field::neighbor, field::neighbor>{{BOTTOM, TOP}, {TOP, BOTTOM}, {RIGHT, LEFT}, {LEFT, RIGHT}};
+
 void field::step_to_neighbors(unsigned int jump_length)
 {
     for (auto it = neighbors.begin(); it != neighbors.end(); it++)
@@ -10,7 +12,7 @@ void field::step_to_neighbors(unsigned int jump_length)
 
 void field::attempt_value_change(unsigned int distance_to_here)
 {
-    if (shortest_to_here == std::numeric_limits<unsigned int>::max() || distance_to_here < shortest_to_here)
+    if (shortest_to_here == UNTOUCHED || distance_to_here < shortest_to_here)
     {
         shortest_to_here = distance_to_here;
 

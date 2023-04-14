@@ -3,6 +3,8 @@
 #include <limits>
 #include <unordered_map>
 
+#define UNTOUCHED std::numeric_limits<unsigned int>::max()
+
 class field
 {
 public:
@@ -32,9 +34,9 @@ protected:
     unsigned int get_shortest_to_here() const;
 
 private:
-    std::unordered_map<neighbor, neighbor> neighbor_opposite{{BOTTOM, TOP}, {TOP, BOTTOM}, {RIGHT, LEFT}, {LEFT, RIGHT}};
+    static std::unordered_map<neighbor, neighbor> neighbor_opposite;
 
-    unsigned int shortest_to_here = std::numeric_limits<unsigned int>::max();
+    unsigned int shortest_to_here = UNTOUCHED;
 
     std::unordered_map<neighbor, field *> neighbors;
 };

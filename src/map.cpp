@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 #include "map.h"
 #include "starting_field.h"
 #include "empty_field.h"
@@ -10,9 +9,7 @@
 std::vector<field *> map::read_row()
 {
     std::vector<field *> result;
-
     std::string row_as_string;
-
     std::cin >> row_as_string;
 
     for (const auto c : row_as_string)

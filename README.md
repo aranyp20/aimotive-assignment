@@ -2,7 +2,7 @@
 
 ## Compilation
 
-A single CMakeLists is available in the root directory. No extrernal dependencies needed.
+A single CMakeLists is available in the root directory (run binary created by CMake: ./aimotive). No extrernal dependencies needed.
 
 ## About the solution
 

@@ -1,21 +1,17 @@
 #pragma once
 
-#include <cstddef>
 #include <vector>
-
 #include "starting_field.h"
 
 class map
 {
-
     std::vector<std::vector<field *>> fields;
     size_t height;
     size_t width;
-
     starting_field *enter_point;
 
     std::vector<field *> read_row();
-    /* Sets the enter_point if it created a starting_field. */
+    /* Sets the enter_point if a starting_field was created. */
     field *create_field(const char);
     void setup_fields();
     void setup_neighborhood();

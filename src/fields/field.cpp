@@ -15,7 +15,6 @@ void field::attempt_value_change(unsigned int distance_to_here)
     if (shortest_to_here == UNTOUCHED || distance_to_here < shortest_to_here)
     {
         shortest_to_here = distance_to_here;
-
         step_to_neighbors();
     }
 }

@@ -1,5 +1,4 @@
 #include <string>
-#include <iostream>
 #include "target_field.h"
 
 bool target_field::is_valid_enter(const neighbor from) const

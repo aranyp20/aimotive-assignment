@@ -38,7 +38,7 @@ field *map::create_field(const char c)
         return new wall_field();
         break;
     default:
-        return new target_field();
+        return new target_field(c);
         break;
     }
 }

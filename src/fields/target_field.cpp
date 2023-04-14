@@ -1,3 +1,5 @@
+#include <string>
+#include <iostream>
 #include "target_field.h"
 
 bool target_field::is_valid_enter(const neighbor from) const
@@ -8,6 +10,10 @@ bool target_field::is_valid_enter(const neighbor from) const
 void target_field::step_to_neighbors(unsigned int)
 {
     return;
+}
+
+target_field::target_field(const char hexa_num) : gate_bin_representation(std::stoi(std::string(&hexa_num, 1), nullptr, 16))
+{
 }
 
 void target_field::enter(unsigned int distance_to_here, const neighbor from)

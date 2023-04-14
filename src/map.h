@@ -15,14 +15,17 @@ class map
     starting_field *enter_point;
 
     std::vector<field *> read_row();
+    /* Sets the enter point if it created a starting_field. */
     field *create_field(const char);
     void setup_fields();
     void setup_neighborhood();
     void set_neighbors_of(size_t row_num, size_t col_num);
 
 public:
+    /* Shallow copy in our use-case leads to unintended behaviour. */
     map(const map &) = delete;
     map &operator=(const map &) = delete;
+
     map() = default;
     ~map();
 

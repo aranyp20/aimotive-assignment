@@ -23,10 +23,8 @@ public:
     void set_neighbor(const neighbor which, field *to_what);
 
 protected:
-    virtual void step_to_neighbors(unsigned int jump_length = 1);
-    /* In case the shortest distance to this field is changed, it enters all it's neighbors (again). */
-    void attempt_value_change(unsigned int distance_to_here);
-    void set_shortest_to_here(unsigned int);
+    void step_to_neighbors(unsigned int jump_length = 1);
+    bool attempt_value_change(unsigned int distance_to_here);
     unsigned int get_shortest_to_here() const;
 
 private:

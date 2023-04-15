@@ -8,11 +8,6 @@ bool target_field::is_valid_enter(const neighbor from) const
     return ((mask << from) & gate_bin_representation) != 0;
 }
 
-void target_field::step_to_neighbors(unsigned int)
-{
-    return;
-}
-
 target_field::target_field(const char hexa_num) : gate_bin_representation(std::stoi(std::string(&hexa_num, 1), nullptr, 16))
 {
 }
